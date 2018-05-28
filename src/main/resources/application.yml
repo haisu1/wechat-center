@@ -1,0 +1,32 @@
+server:
+  port: 8005
+  tomcat:
+    uri-encoding: utf-8
+spring:
+  application:
+    name: service-wechat-center
+#  thymeleaf:
+#    mode: LEGACYHTML5
+#    cache: false
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    active: dev
+  http:
+    multipart:
+      max-file-size: 30Mb
+      max-request-size: 30Mb
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.244:8761/eureka/
+      # 需要明确指定 defaultZone ，不然只能连接到本地
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  typeAliasesPackage: com.cdkj.**.model.pojo
+
+feign:
+  hystrix:
+    enabled: true
