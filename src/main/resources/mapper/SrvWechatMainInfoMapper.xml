@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cdkj.wechat.model.dao.SrvWechatMainInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cdkj.wechat.model.pojo.SrvWechatMainInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="SYS_ACCOUNT" property="sysAccount" jdbcType="VARCHAR" />
+    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+    <result column="HEAD_IMG" property="headImg" jdbcType="VARCHAR" />
+    <result column="SERVICE_TYPE_INFO" property="serviceTypeInfo" jdbcType="INTEGER" />
+    <result column="VERIFY_TYPE_INFO" property="verifyTypeInfo" jdbcType="INTEGER" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="ALIAS" property="alias" jdbcType="VARCHAR" />
+    <result column="QRCODE_URL" property="qrcodeUrl" jdbcType="VARCHAR" />
+    <result column="PRINCIPAL_NAME" property="principalName" jdbcType="VARCHAR" />
+    <result column="SIGNATURE" property="signature" jdbcType="VARCHAR" />
+    <result column="AUTHORIZER_APPID" property="authorizerAppid" jdbcType="VARCHAR" />
+    <result column="AUTHORIZER_REFRESH_TOKEN" property="authorizerRefreshToken" jdbcType="VARCHAR" />
+    <result column="ENABLED" property="enabled" jdbcType="INTEGER" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="CREATE_BY" property="createBy" jdbcType="VARCHAR" />
+    <result column="CREATE_DT" property="createDt" jdbcType="VARCHAR" />
+    <result column="UPDATE_DT" property="updateDt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SYS_ACCOUNT, NICK_NAME, HEAD_IMG, SERVICE_TYPE_INFO, VERIFY_TYPE_INFO, USER_NAME, 
+    ALIAS, QRCODE_URL, PRINCIPAL_NAME, SIGNATURE, AUTHORIZER_APPID, AUTHORIZER_REFRESH_TOKEN, 
+    ENABLED, VERSION, STATUS, REMARK, MEMO, CREATE_BY, CREATE_DT, UPDATE_DT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from srv_wechat_main_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from srv_wechat_main_info
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cdkj.wechat.model.pojo.SrvWechatMainInfo" >
+    insert into srv_wechat_main_info (ID, SYS_ACCOUNT, NICK_NAME, 
+      HEAD_IMG, SERVICE_TYPE_INFO, VERIFY_TYPE_INFO, 
+      USER_NAME, ALIAS, QRCODE_URL, 
+      PRINCIPAL_NAME, SIGNATURE, AUTHORIZER_APPID, 
+      AUTHORIZER_REFRESH_TOKEN, ENABLED, VERSION, 
+      STATUS, REMARK, MEMO, 
+      CREATE_BY, CREATE_DT, UPDATE_DT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{sysAccount,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR}, #{serviceTypeInfo,jdbcType=INTEGER}, #{verifyTypeInfo,jdbcType=INTEGER}, 
+      #{userName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{qrcodeUrl,jdbcType=VARCHAR}, 
+      #{principalName,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{authorizerAppid,jdbcType=VARCHAR}, 
+      #{authorizerRefreshToken,jdbcType=VARCHAR}, #{enabled,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDt,jdbcType=VARCHAR}, #{updateDt,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cdkj.wechat.model.pojo.SrvWechatMainInfo" >
+    insert into srv_wechat_main_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sysAccount != null" >
+        SYS_ACCOUNT,
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME,
+      </if>
+      <if test="headImg != null" >
+        HEAD_IMG,
+      </if>
+      <if test="serviceTypeInfo != null" >
+        SERVICE_TYPE_INFO,
+      </if>
+      <if test="verifyTypeInfo != null" >
+        VERIFY_TYPE_INFO,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="alias != null" >
+        ALIAS,
+      </if>
+      <if test="qrcodeUrl != null" >
+        QRCODE_URL,
+      </if>
+      <if test="principalName != null" >
+        PRINCIPAL_NAME,
+      </if>
+      <if test="signature != null" >
+        SIGNATURE,
+      </if>
+      <if test="authorizerAppid != null" >
+        AUTHORIZER_APPID,
+      </if>
+      <if test="authorizerRefreshToken != null" >
+        AUTHORIZER_REFRESH_TOKEN,
+      </if>
+      <if test="enabled != null" >
+        ENABLED,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY,
+      </if>
+      <if test="createDt != null" >
+        CREATE_DT,
+      </if>
+      <if test="updateDt != null" >
+        UPDATE_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sysAccount != null" >
+        #{sysAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceTypeInfo != null" >
+        #{serviceTypeInfo,jdbcType=INTEGER},
+      </if>
+      <if test="verifyTypeInfo != null" >
+        #{verifyTypeInfo,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcodeUrl != null" >
+        #{qrcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="principalName != null" >
+        #{principalName,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerAppid != null" >
+        #{authorizerAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerRefreshToken != null" >
+        #{authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        #{enabled,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null" >
+        #{createDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDt != null" >
+        #{updateDt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cdkj.wechat.model.pojo.SrvWechatMainInfo" >
+    update srv_wechat_main_info
+    <set >
+      <if test="sysAccount != null" >
+        SYS_ACCOUNT = #{sysAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        HEAD_IMG = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceTypeInfo != null" >
+        SERVICE_TYPE_INFO = #{serviceTypeInfo,jdbcType=INTEGER},
+      </if>
+      <if test="verifyTypeInfo != null" >
+        VERIFY_TYPE_INFO = #{verifyTypeInfo,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        ALIAS = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcodeUrl != null" >
+        QRCODE_URL = #{qrcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="principalName != null" >
+        PRINCIPAL_NAME = #{principalName,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        SIGNATURE = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerAppid != null" >
+        AUTHORIZER_APPID = #{authorizerAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerRefreshToken != null" >
+        AUTHORIZER_REFRESH_TOKEN = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        ENABLED = #{enabled,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=INTEGER}+1,
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null" >
+        CREATE_DT = #{createDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDt != null" >
+        UPDATE_DT = #{updateDt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cdkj.wechat.model.pojo.SrvWechatMainInfo" >
+    update srv_wechat_main_info
+    set SYS_ACCOUNT = #{sysAccount,jdbcType=VARCHAR},
+      NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      HEAD_IMG = #{headImg,jdbcType=VARCHAR},
+      SERVICE_TYPE_INFO = #{serviceTypeInfo,jdbcType=INTEGER},
+      VERIFY_TYPE_INFO = #{verifyTypeInfo,jdbcType=INTEGER},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      ALIAS = #{alias,jdbcType=VARCHAR},
+      QRCODE_URL = #{qrcodeUrl,jdbcType=VARCHAR},
+      PRINCIPAL_NAME = #{principalName,jdbcType=VARCHAR},
+      SIGNATURE = #{signature,jdbcType=VARCHAR},
+      AUTHORIZER_APPID = #{authorizerAppid,jdbcType=VARCHAR},
+      AUTHORIZER_REFRESH_TOKEN = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      ENABLED = #{enabled,jdbcType=INTEGER},
+      VERSION = #{version,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      CREATE_DT = #{createDt,jdbcType=VARCHAR},
+      UPDATE_DT = #{updateDt,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByAuthAppId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from srv_wechat_main_info
+    where AUTHORIZER_APPID=#{0}
+    and ENABLED = 1
+  </select>
+</mapper>
